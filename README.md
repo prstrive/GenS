@@ -6,4 +6,6 @@ GenS is a generalizable neural surface reconstruction method, which can recover 
 >
 > NeuIPS 2023 ([arxiv](https://github.com/prstrive/GenS))
 
+The reconstruction results on DTU dataset can be downloaded [here](https://drive.google.com/drive/folders/1Ks5W-nIGnedG6_BTfiNIKv4KbZQ_Td_S?usp=sharing).
+
 Code will be released soon!
