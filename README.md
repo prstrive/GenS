@@ -127,13 +127,13 @@ bash ./scripts/finetune.sh --resume <your CKPT path>
 You can change the scene and view through the `--scene` and `ref_view` command directly or through modifying the configuration file. 
 
 #### 2. BlendedMVS fine-tuning
-
-we use `confs/gens_bmvs_finetune.conf` file to config the BlendedMVS fine-tuning. Run:
+https://github.com/prstrive/GenS/blob/main/README.md
+we use `confs/gens_bmvs_finetune.conf` file to config the BlendedMVS fine-tuning. Similarly, you need to first make sure the bounding box is compact enough and then run:
 ```
 python main.py --conf confs/gens_bmvs_finetune.conf --mode finetune --resume <your CKPT path>
 ```
 
-Similarly, you need to make sure the bounding box is compact enough.
+Note that we save the optimized volume and implicit surface network after fine-tuning. And if you want to resume the fine-tuned model, you need add `--load_vol` command to distinguish it from the oridinary ckpt.
 
 ## ⚖ Citation
 If you find our work useful in your research please consider citing our paper:
