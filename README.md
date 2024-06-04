@@ -10,7 +10,9 @@ GenS is an end-to-end generalizable neural surface reconstruction method that us
     <img src="./.github/images/sample.png" width="100%"/>
 </p>
 
-*If there are any bugs in our code, please feel free to raise your issues.*
+Formula correction of Eq. (7) in our paper:
+$$\frac{-sdf(p_2)}{sdf(p_1)} = \frac{t_2-t_s}{t_s-t_1} \  \Rightarrow \  t_s = \frac{sdf(p_1)t_2-sdf(p_2)t_1}{sdf(p_1)-sdf(p_2)}$$
+We apologize for this mistake, and if there are any bugs in our code, please feel free to raise your issues.
 
 ## ⚙ Setup
 #### 1. Recommended environment
