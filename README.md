@@ -83,7 +83,7 @@ We define all information like the model structure and testing parameters in the
 ```
 bash ./scripts/run.sh --mode val --resume <your CKPT path>
 ```
-This will predict all scenes in the [test split](/home/pengr/Documents/GenS/datasets/dtu_split/test.txt) at view index 23 by default. If you want to get the results at other views (e.g., view43), you can change the `ref_view` under the `val_dataset` namespace. Meanwhile, you can also specify `scene` list under the `val_dataset` namespace to test on a single scene like `scene=[scan24,scan55]`.
+This will predict all scenes in the [test split](/home/pengr/Documents/GenS/datasets/dtu_split/test.txt) at view index 23 by default. If you want to get the results at other views (e.g., view43), you can change the `ref_view` under the `val_dataset` namespace in configuration file. Meanwhile, you can also specify `scene` list under the `val_dataset` namespace to test on a single scene like `scene=[scan24,scan55]`.
 
 Optionaly, you can add `--clean_mesh` command to generate the filtered mesh, but you need to note that the mask used in `--clean_mesh` command is from MVSNet and is not the correct object mask used during the [quantitative evaluation](evaluation/clean_meshes.py).
 
