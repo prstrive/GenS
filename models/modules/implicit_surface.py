@@ -48,18 +48,13 @@ class ImplicitSurface(nn.Module):
     def __init__(self, confs):
         super(ImplicitSurface, self).__init__()
         
-        self.finetune_mode = confs.get_int("finetune_mode", default=0)
         self.n_samples = confs.get_int("render.n_samples")
         self.n_importance = confs.get_int("render.n_importance")
         self.up_sample_steps = confs.get_int("render.up_sample_steps")
         self.perturb = confs.get_float("render.perturb")
         
         self.sdf_network = SDFNetwork(**confs["sdf_network"])
-        if self.finetune_mode:
-            # for finetuning
-            self.color_network = RenderingNetwork(**confs["color_network"])
-        else:
-            self.color_network = BlendingNetwork(**confs["color_network"])
+        self.color_network = BlendingNetwork(**confs["color_network"])
         self.deviation_network = SingleVarianceNetwork(**confs["variance_network"])
         
     def up_sample(self, rays_o, rays_d, z_vals, sdf, n_importance, mask_volumes, inv_s):
@@ -195,26 +190,18 @@ class ImplicitSurface(nn.Module):
         gradients[pts_mask_bool] = gradients_valid
         smooth[pts_mask_bool] = smooth_valid
         
-        if self.finetune_mode:
-            # rendering color net for finetuning
-            sampled_color = torch.zeros_like(pts)
-            sampled_color_valid = self.color_network(pts[pts_mask_bool], gradients[pts_mask_bool], dirs[pts_mask_bool], feature_vector[pts_mask_bool])
-            sampled_color[pts_mask_bool] = sampled_color_valid
-            sampled_color = sampled_color.reshape(batch_size, n_samples, 3)
-            valid_mask = torch.ones(batch_size, 1).type_as(pts)
-        else:
-            # blending color net for training
-            sampled_color = torch.zeros_like(pts)
-            mask = torch.zeros(pts.shape[0], imgs.shape[0]-1).bool().to(pts.device)
-            feat_views, ray_diff, mask_valid = lookup_feature(pts[pts_mask_bool], imgs, intrs, c2ws, features)
-            # mask = (mask.float() * (torch.abs(pts)<1).all(dim=-1, keepdim=True).float()) > 0
-            sampled_color_valid = self.color_network(feat_views, ray_diff, mask_valid)
-            sampled_color[pts_mask_bool] = sampled_color_valid
-            sampled_color = sampled_color.reshape(batch_size, n_samples, 3)
-            mask[pts_mask_bool] = mask_valid
-            minimum_vas_view = 1 #max(2, int(mask.shape[-1]*0.4))
-            valid_mask = mask.reshape(batch_size, n_samples, -1).detach().float()
-            valid_mask = (valid_mask.sum(dim=2) > minimum_vas_view).float().sum(dim=1, keepdim=True) > 8 # (n_ray, 1)
+        # blending
+        sampled_color = torch.zeros_like(pts)
+        mask = torch.zeros(pts.shape[0], imgs.shape[0]-1).bool().to(pts.device)
+        feat_views, ray_diff, mask_valid = lookup_feature(pts[pts_mask_bool], imgs, intrs, c2ws, features)
+        # mask = (mask.float() * (torch.abs(pts)<1).all(dim=-1, keepdim=True).float()) > 0
+        sampled_color_valid = self.color_network(feat_views, ray_diff, mask_valid)
+        sampled_color[pts_mask_bool] = sampled_color_valid
+        sampled_color = sampled_color.reshape(batch_size, n_samples, 3)
+        mask[pts_mask_bool] = mask_valid
+        minimum_vas_view = 1 #max(2, int(mask.shape[-1]*0.4))
+        valid_mask = mask.reshape(batch_size, n_samples, -1).detach().float()
+        valid_mask = (valid_mask.sum(dim=2) > minimum_vas_view).float().sum(dim=1, keepdim=True) > 8 # (n_ray, 1)
 
         inv_s = self.deviation_network(torch.zeros([1, 3]).type_as(rays_o))[:, :1].clip(1e-6, 1e6)           # Single parameter
         inv_s = inv_s.expand(batch_size * n_samples, 1)
