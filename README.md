@@ -48,8 +48,11 @@ for evaluation. The data structure is just like this:
 ```
 blendedmvs                          
   ├── 5a0271884e62597cdee0d0eb
-  ├── blended_images
-  ├── cams                
+    ├── blended_images
+    ├── cams
+      ├── 00000000_cam.txt
+      ├── ...
+      ├── pair.txt  
   ├── 5a3ca9cb270f0e3f14d0eddb
   ├── ...
 ```
