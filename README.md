@@ -39,7 +39,7 @@ dtu_training
 ```
 `Rectified_raw` is the full resolution RGB images provided in [DTU](http://roboimagedata2.compute.dtu.dk/data/MVS/Rectified.zip). We use the same training and testing split as SparseNeuS, please refer to [here](datasets/dtu_split) for more details.
 
-For testing, you can download the testing data prepared by SparseNeuS [here](https://connecthkuhk-my.sharepoint.com/personal/xxlong_connect_hku_hk/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fxxlong%5Fconnect%5Fhku%5Fhk%2FDocuments%2Fsparseneus%2FDTU%5FTEST%2Ezip&parent=%2Fpersonal%2Fxxlong%5Fconnect%5Fhku%5Fhk%2FDocuments%2Fsparseneus&ga=1), which contains some object masks for cleaning the mesh. Put it to `<your DTU_TEST path>` For quantitative evaluation, you need to download the ground-truth points from the [DTU website](https://roboimagedata.compute.dtu.dk/?page_id=36) and put it to `<your GT_POINTS path>`.
+For testing, you can download the testing data prepared by SparseNeuS [here](https://connecthkuhk-my.sharepoint.com/personal/xxlong_connect_hku_hk/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fxxlong%5Fconnect%5Fhku%5Fhk%2FDocuments%2Fsparseneus%2FDTU%5FTEST%2Ezip&parent=%2Fpersonal%2Fxxlong%5Fconnect%5Fhku%5Fhk%2FDocuments%2Fsparseneus&ga=1), which contains some object masks for cleaning the mesh. Put it to `<your DTU_TEST path>`. For quantitative evaluation, you need to download the ground-truth points from the [DTU website](https://roboimagedata.compute.dtu.dk/?page_id=36) and put it to `<your GT_POINTS path>`.
 
 #### 3. BlendedMVS Dataset
 
