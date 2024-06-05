@@ -140,13 +140,13 @@ Note that we save the optimized volume and implicit surface network after fine-t
 ## ⚖ Citation
 If you find our work useful in your research please consider citing our paper:
 ```
-@article{peng2024gens,
+@inproceedings{peng2023gens,
   title={GenS: Generalizable Neural Surface Reconstruction from Multi-View Images},
   author={Peng, Rui and Gu, Xiaodong and Tang, Luyang and Shen, Shihe and Yu, Fanqi and Wang, Ronggang},
-  journal={Advances in Neural Information Processing Systems},
-  volume={36},
-  year={2024}
+  booktitle={Thirty-seventh Conference on Neural Information Processing Systems (NeurIPS)},
+  year={2023}
 }
+
 ```
 
 ## 👩‍ Acknowledgements
