@@ -4,7 +4,7 @@ GenS is an end-to-end generalizable neural surface reconstruction method that us
 >
 > Rui Peng, Xiaodong Gu, Luyang Tang, Shihe Shen, Fanqi Yu, Ronggang Wang
 >
-> NeuIPS 2023 ([OpenReview](https://proceedings.neurips.cc/paper_files/paper/2023/file/b29ab822442a1616f9bd390fddf6e425-Paper-Conference.pdf))
+> NeuIPS 2023 ([arxiv](https://arxiv.org/abs/2406.02495) | [OpenReview](https://proceedings.neurips.cc/paper_files/paper/2023/file/b29ab822442a1616f9bd390fddf6e425-Paper-Conference.pdf))
 
 <p align="center">
     <img src="./.github/images/sample.png" width="100%"/>
