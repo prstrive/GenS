@@ -26,7 +26,7 @@ pip install --upgrade git+https://github.com/mit-han-lab/torchsparse.git@v2.1.0
 
 #### 2. DTU Dataset
 
-We only train our model on DTU dataset. We adopt the full resolution ground-truth depth maps and RGB images, and use the camera parameters prepocessed by CasMVSNet or MVSNet. Simply, please follow the instruction [here](https://github.com/prstrive/UniMVSNet/tree/main#2-dtu-dataset) of UniMVSNet to prepare the dataset. We generate pseudo depth maps using the model trained with dense depths to supervise the model with sparse inputs, and download them from [here](https://drive.google.com/file/d/1OyPoj56wV3OEPctIKUbrCEOh0sPQTKo9/view?usp=sharing). The final data structure is just like this:
+We only train our model on DTU dataset. We adopt the full resolution ground-truth depth maps (just for testing) and RGB images, and use the camera parameters prepocessed by CasMVSNet or MVSNet. Simply, please follow the instruction [here](https://github.com/prstrive/UniMVSNet/tree/main#2-dtu-dataset) of UniMVSNet to prepare the dataset. We generate pseudo depth maps using the model trained with dense inputs to supervise the model with sparse inputs, and download them from [here](https://drive.google.com/file/d/1OyPoj56wV3OEPctIKUbrCEOh0sPQTKo9/view?usp=sharing). The final data structure is just like this:
 ```
 dtu_training                          
   ├── Cameras
