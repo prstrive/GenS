@@ -129,7 +129,7 @@ We use `confs/gens_finetune.conf` file to config the fine-tuning on DTU dataset.
 bash ./scripts/finetune.sh --resume <your CKPT path>
 ```
 
-You can change the scene and view through the `--scene` and `ref_view` command directly or through modifying the configuration file. 
+You can change the scene and view through the `--scene` and `--ref_view` command directly or through modifying the configuration file. 
 
 #### 2. BlendedMVS fine-tuning
 
