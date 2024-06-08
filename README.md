@@ -20,8 +20,6 @@ We apologize for this mistake, and if there are any bugs in our code, please fee
 conda create -n gens python=3.10.9
 conda activate gens
 pip install -r requirements.txt
-conda install -c conda-forge sparsehash
-pip install --upgrade git+https://github.com/mit-han-lab/torchsparse.git@v2.1.0
 ```
 
 #### 2. DTU Dataset
